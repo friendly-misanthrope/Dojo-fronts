@@ -52,10 +52,38 @@ class LinkedList {
     if (this.head === null){
       return null
     }
-    // Return value stored in head.
+    // Return value stored in head node.
     return this.head.data
   }
 
+  // 4.) Create display() that uses a while loop and a runner to return a string
+  //     containing all list values.
+  display() {
+    
+    // Safety check, make sure there are nodes in the list
+    if (!this.head) {
+      return "List is empty!"
+    }
+
+    // create a variable to store our string, initialized as an empty string
+    let listValues = ''
+
+    // Add the head's value to our listValues string
+    listValues += this.head.data
+
+    // Initialize a runner pointing the next node
+    let nextNode = this.head.next
+
+    // while loop to iterate through list, terminates when runner reaches list tail
+    while (nextNode) {
+      // append runner value to our string
+      listValues += " " + nextNode.data
+
+      // update runner to point at next node
+      nextNode = nextNode.next
+    }
+    return `Linked list values: ${listValues} `
+  }
 }
 
 //! Tests
@@ -66,3 +94,5 @@ myList1.addFront(69)
 myList1.removeFront()
 console.log(myList1.returnFront())
 console.log(myList1)
+
+console.log(myList1.display())
